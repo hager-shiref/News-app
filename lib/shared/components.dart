@@ -50,12 +50,14 @@ Widget buildArticleItem(list, context) => InkWell(
         ]),
       ),
     );
+//=======================================================================================================================================================
 Widget myDivider() => Container(
       margin: const EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
       width: double.infinity,
       height: 1.0,
       color: Colors.grey[300],
     );
+//=======================================================================================================================================================
 
 Widget defaultFormField({
   required TextEditingController controller,
@@ -70,6 +72,7 @@ Widget defaultFormField({
   bool isClickable = true,
 }) =>
     TextFormField(
+
       onChanged: (value) {
         onChanged(value);
       },
@@ -82,6 +85,8 @@ Widget defaultFormField({
       },
       decoration: InputDecoration(
         labelText: label,
+        filled: true,
+        fillColor: Colors.grey[100],
         prefixIcon: Icon(
           prefix,
         ),
@@ -98,3 +103,4 @@ Widget defaultFormField({
         border: const OutlineInputBorder(),
       ),
     );
+//=======================================================================================================================================================

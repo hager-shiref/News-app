@@ -5,12 +5,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/cubit/cubit.dart';
+import 'package:news_app/cubit/news_cubit.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/layout/news_layout.dart';
 import 'package:news_app/network/local/cache_helper.dart';
 import 'package:news_app/network/remote/dio_helper.dart';
 import 'package:news_app/cubit/bloc_observer.dart';
+
+import 'cubit/mode_cubit.dart';
 
 void main() async {
   // بيتأكد ان كل حاجه ف الميثود خلصت الاول وبعدين بيفتح الأبليكيشن
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => NewsCubit()..changeAppMode(fromShared: isDark),
+        BlocProvider(create: (context) => ModeCubit()..changeAppMode(fromShared: isDark),
         ),
         BlocProvider(create: (context)=>NewsCubit()
           ..getBusiness()
@@ -37,15 +39,15 @@ class MyApp extends StatelessWidget {
           ..getSciences()),
 
       ],
-      child: BlocConsumer<NewsCubit, NewsStates>(
+      child: BlocConsumer<ModeCubit, NewsStates>(
         listener: (context, state) {},
         builder: (BuildContext context, NewsStates state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            themeMode: ThemeMode.system
-           /* NewsCubit.get(context).isDark
+            themeMode: //ThemeMode.system
+            ModeCubit.get(context).isDark
                 ? ThemeMode.dark
-                : ThemeMode.light*/,
+                : ThemeMode.light,
             darkTheme: ThemeData(
                 scaffoldBackgroundColor: Colors.black45,
                 primarySwatch: Colors.deepOrange,
