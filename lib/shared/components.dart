@@ -72,7 +72,6 @@ Widget defaultFormField({
   bool isClickable = true,
 }) =>
     TextFormField(
-
       onChanged: (value) {
         onChanged(value);
       },
