@@ -28,11 +28,12 @@ class SearchScreen extends StatelessWidget {
                   type: TextInputType.text,
                   prefix: Icons.search,
                   controller: searchController,
-                  validate: (String value) {
-                    if (value.isEmpty) {
-                      return "search mustn't be empty";
-                    }
-                  },
+                  validate: (value) {
+                            if (value.isEmpty || value == null) {
+                              return 'Please , enter something ! ';
+                            }
+                            return null;
+                          },
                 ),
               ),
               list.isNotEmpty

@@ -63,8 +63,7 @@ Widget defaultFormField({
   required TextEditingController controller,
   required TextInputType type,
   required Function onChanged,
-  bool isPassword = false,
-  required Function validate,
+  required final validate,
   required String label,
   required IconData prefix,
   IconData? suffix,
@@ -77,11 +76,8 @@ Widget defaultFormField({
       },
       controller: controller,
       keyboardType: type,
-      obscureText: isPassword,
       enabled: isClickable,
-      validator: (s) {
-        validate(s);
-      },
+       validator: validate,
       decoration: InputDecoration(
         labelText: label,
         filled: true,
